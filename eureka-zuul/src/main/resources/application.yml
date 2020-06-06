@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: eureka-zuul
+server:
+  port: 8006
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  routes:
+    spring-ribbon:
+      path: /ribbon/**
+      serviceId: eureka-ribbon
+    spring-feign:
+      path: /user/**
+      serviceId: eureka-feign
